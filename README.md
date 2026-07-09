@@ -95,6 +95,7 @@ Files used by Docker:
 - `Dockerfile` builds a small Python image for the bot.
 - `docker-compose.yml` mounts `./config.toml` read-only into the container.
 - `docker-compose.yml` mounts `./data` to `/app/data` so SQLite data persists across restarts/rebuilds.
+- The container runs as root so it can write to the bind-mounted `./data` directory on normal Docker/Podman setups. If you change the container user, make sure that user can write to `./data`.
 - `.dockerignore` keeps secrets, local DB files, virtualenvs, and caches out of the image build context.
 
 ## Admin usage

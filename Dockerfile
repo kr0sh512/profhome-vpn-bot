@@ -11,10 +11,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY bot.py ./
 COPY vpn_bot ./vpn_bot
 
-RUN useradd --create-home --uid 10001 botuser \
-    && mkdir -p /app/data \
-    && chown -R botuser:botuser /app
-
-USER botuser
+RUN mkdir -p /app/data
 
 CMD ["python", "bot.py", "--config", "/app/config.toml"]
