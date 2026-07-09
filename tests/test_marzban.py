@@ -17,7 +17,7 @@ def test_build_trial_user_payload_matches_required_proxy_inbound_and_limits():
     assert payload["inbounds"] == {"vless": ["VLESS TCP REALITY"]}
     assert payload["expire"] == 1_700_000_000 + 3 * 24 * 60 * 60
     assert payload["data_limit"] == 10 * GIB
-    assert payload["data_limit_reset_strategy"] == "no_reset"
+    assert payload["data_limit_reset_strategy"] == "month"
     assert payload["status"] == "active"
     assert "Phone: +79990000000" in payload["note"]
     assert "856850518" not in payload["note"]

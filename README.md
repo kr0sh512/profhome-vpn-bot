@@ -127,7 +127,7 @@ Send it to the user.
   "inbounds": {"vless": ["VLESS TCP REALITY"]},
   "expire": "now + 3 days",
   "data_limit": "10 GiB",
-  "data_limit_reset_strategy": "no_reset",
+  "data_limit_reset_strategy": "month",
   "status": "active"
 }
 ```

@@ -4,6 +4,14 @@ import tomllib
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit, urlunsplit
+
+
+def normalize_marzban_url(url: str) -> str:
+    parsed = urlsplit(url.strip().rstrip("/"))
+    if parsed.scheme and parsed.netloc:
+        return urlunsplit((parsed.scheme, parsed.netloc, "", "", ""))
+    return url.strip().rstrip("/")
 
 
 @dataclass(frozen=True)
@@ -22,7 +30,7 @@ class Config:
         return cls(
             telegram_bot_token=str(data["telegram_bot_token"]),
             admin_ids={int(item) for item in data.get("admin_ids", [])},
-            marzban_url=str(data["marzban_url"]).rstrip("/"),
+            marzban_url=normalize_marzban_url(str(data["marzban_url"])),
             marzban_username=str(data["marzban_username"]),
             marzban_password=str(data["marzban_password"]),
             payment_text=str(data["payment_text"]),

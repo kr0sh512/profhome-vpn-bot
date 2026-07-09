@@ -18,6 +18,7 @@ from .utils import (
 
 DEFAULT_PROXIES = {"vless": {"flow": "xtls-rprx-vision"}}
 DEFAULT_INBOUNDS = {"vless": ["VLESS TCP REALITY"]}
+DATA_LIMIT_RESET_STRATEGY = "month"
 
 
 class MarzbanError(RuntimeError):
@@ -53,7 +54,7 @@ class MarzbanClient:
             "inbounds": DEFAULT_INBOUNDS,
             "expire": current + TRIAL_DAYS * 24 * 60 * 60,
             "data_limit": TRIAL_TRAFFIC_BYTES,
-            "data_limit_reset_strategy": "no_reset",
+            "data_limit_reset_strategy": DATA_LIMIT_RESET_STRATEGY,
             "status": "active",
             "note": build_marzban_note(
                 first_name=first_name,
@@ -128,7 +129,7 @@ class MarzbanClient:
         payload = {
             "expire": new_expire,
             "data_limit": PAID_TRAFFIC_BYTES,
-            "data_limit_reset_strategy": "no_reset",
+            "data_limit_reset_strategy": DATA_LIMIT_RESET_STRATEGY,
             "status": "active",
         }
         await self.modify_user(username, payload)
@@ -141,7 +142,7 @@ class MarzbanClient:
         payload = {
             "expire": new_expire,
             "data_limit": PAID_TRAFFIC_BYTES,
-            "data_limit_reset_strategy": "no_reset",
+            "data_limit_reset_strategy": DATA_LIMIT_RESET_STRATEGY,
             "status": "active",
         }
         await self.modify_user(username, payload)
