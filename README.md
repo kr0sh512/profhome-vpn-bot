@@ -38,7 +38,7 @@ The bot uses:
 - `PUT /api/user/{username}`
 - `POST /api/user/{username}/reset`
 
-## Install
+## Install locally
 
 ```bash
 python -m venv .venv
@@ -49,11 +49,53 @@ cp config.example.toml config.toml
 
 Edit `config.toml`.
 
-## Run
+For local runs, `database_path = "bot.sqlite3"` is fine.
+
+## Run locally
 
 ```bash
 python bot.py --config config.toml
 ```
+
+## Run with Docker Compose
+
+Copy and edit the config first:
+
+```bash
+cp config.example.toml config.toml
+mkdir -p data
+```
+
+For Docker Compose, set the SQLite path in `config.toml` to the mounted data directory:
+
+```toml
+database_path = "/app/data/bot.sqlite3"
+```
+
+Start the bot:
+
+```bash
+docker compose up -d --build
+```
+
+View logs:
+
+```bash
+docker compose logs -f vpn-bot
+```
+
+Stop the bot:
+
+```bash
+docker compose down
+```
+
+Files used by Docker:
+
+- `Dockerfile` builds a small Python image for the bot.
+- `docker-compose.yml` mounts `./config.toml` read-only into the container.
+- `docker-compose.yml` mounts `./data` to `/app/data` so SQLite data persists across restarts/rebuilds.
+- `.dockerignore` keeps secrets, local DB files, virtualenvs, and caches out of the image build context.
 
 ## Admin usage
 

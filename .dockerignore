@@ -1,0 +1,12 @@
+.git
+.venv
+__pycache__
+.pytest_cache
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+bot.sqlite3
+data
+config.toml
+.env
