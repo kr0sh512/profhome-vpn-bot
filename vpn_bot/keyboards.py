@@ -6,9 +6,9 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardBu
 def main_menu() -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text="📄 VPN info")],
-            [KeyboardButton(text="💳 Extend VPN"), KeyboardButton(text="🔄 Reset traffic")],
-            [KeyboardButton(text="📱 Share phone", request_contact=True)],
+            [KeyboardButton(text="📄 Информация о VPN")],
+            [KeyboardButton(text="💳 Продлить VPN"), KeyboardButton(text="🔄 Сбросить трафик")],
+            [KeyboardButton(text="📱 Поделиться телефоном", request_contact=True)],
         ],
         resize_keyboard=True,
     )
@@ -16,7 +16,7 @@ def main_menu() -> ReplyKeyboardMarkup:
 
 def admin_menu() -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text="➕ New invite")]],
+        keyboard=[[KeyboardButton(text="➕ Новое приглашение")]],
         resize_keyboard=True,
     )
 
@@ -24,9 +24,9 @@ def admin_menu() -> ReplyKeyboardMarkup:
 def extend_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="1 month — 50 ₽", callback_data="extend:1")],
-            [InlineKeyboardButton(text="2 months — 100 ₽", callback_data="extend:2")],
-            [InlineKeyboardButton(text="3 months — 150 ₽", callback_data="extend:3")],
+            [InlineKeyboardButton(text="1 месяц — 50 ₽", callback_data="extend:1")],
+            [InlineKeyboardButton(text="2 месяца — 100 ₽", callback_data="extend:2")],
+            [InlineKeyboardButton(text="3 месяца — 150 ₽", callback_data="extend:3")],
         ]
     )
 
@@ -34,7 +34,7 @@ def extend_keyboard() -> InlineKeyboardMarkup:
 def reset_confirm_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="✅ Confirm reset", callback_data="reset:confirm")],
-            [InlineKeyboardButton(text="❌ Cancel", callback_data="reset:cancel")],
+            [InlineKeyboardButton(text="✅ Подтвердить сброс", callback_data="reset:confirm")],
+            [InlineKeyboardButton(text="❌ Отмена", callback_data="reset:cancel")],
         ]
     )

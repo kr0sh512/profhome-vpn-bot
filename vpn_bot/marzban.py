@@ -70,11 +70,11 @@ class MarzbanClient:
             headers={"Content-Type": "application/x-www-form-urlencoded"},
         )
         if response.status_code >= 400:
-            raise MarzbanError(f"Marzban auth failed: {response.status_code} {response.text}")
+            raise MarzbanError(f"ошибка авторизации Marzban: {response.status_code} {response.text}")
         payload = response.json()
         token = payload.get("access_token")
         if not token:
-            raise MarzbanError("Marzban auth response does not contain access_token")
+            raise MarzbanError("ответ авторизации Marzban не содержит access_token")
         self._token = str(token)
         return self._token
 
@@ -89,7 +89,7 @@ class MarzbanClient:
             headers["Authorization"] = f"Bearer {self._token}"
             response = await self._client.request(method, path, headers=headers, **kwargs)
         if response.status_code >= 400:
-            raise MarzbanError(f"Marzban API error {method} {path}: {response.status_code} {response.text}")
+            raise MarzbanError(f"ошибка API Marzban {method} {path}: {response.status_code} {response.text}")
         if not response.content:
             return None
         return response.json()

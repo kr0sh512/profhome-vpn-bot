@@ -58,23 +58,23 @@ def build_marzban_note(
 
 def bytes_to_human(value: int | None) -> str:
     if value is None:
-        return "unlimited"
+        return "безлимит"
     if value == 0:
-        return "unlimited"
+        return "безлимит"
     return f"{value / GIB:.2f} GB"
 
 
 def format_timestamp(ts: int | None) -> str:
     if not ts:
-        return "unlimited"
+        return "безлимит"
     return datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
 
 def format_remaining_days(expire: int | None, *, now: int | None = None) -> str:
     if not expire:
-        return "unlimited"
+        return "безлимит"
     current = now_ts() if now is None else now
     if expire <= current:
-        return "expired"
+        return "истёк"
     days = (expire - current) / SECONDS_PER_DAY
-    return f"{days:.1f} days"
+    return f"{days:.1f} дн."

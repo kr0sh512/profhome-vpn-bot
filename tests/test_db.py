@@ -66,6 +66,6 @@ def test_used_invite_cannot_be_activated_twice(tmp_path: Path):
             activated_at=1200,
         )
     except ValueError as exc:
-        assert "already used" in str(exc)
+        assert "уже использована" in str(exc)
     else:
         raise AssertionError("second activation should fail")

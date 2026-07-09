@@ -76,9 +76,9 @@ class Database:
         with self.connect() as conn:
             row = conn.execute("SELECT * FROM users WHERE invite_token = ?", (token,)).fetchone()
             if row is None:
-                raise ValueError("invite token not found")
+                raise ValueError("ссылка-приглашение не найдена")
             if row["tg_user_id"] is not None:
-                raise ValueError("invite token already used")
+                raise ValueError("ссылка-приглашение уже использована")
             conn.execute(
                 """
                 UPDATE users

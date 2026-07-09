@@ -6,9 +6,9 @@ marzban_username = "admin"
 marzban_password = "replace-me"
 
 payment_text = """
-Pay to: +7 XXX XXX XX XX
-Amount depends on selected period.
-After payment, send screenshot/photo or PDF here.
+Оплатите на: +7 XXX XXX XX XX
+Сумма зависит от выбранного срока продления.
+После оплаты отправьте сюда скриншот/фото или PDF с подтверждением.
 """
 
 database_path = "bot.sqlite3"
